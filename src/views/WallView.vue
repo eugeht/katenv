@@ -4,7 +4,13 @@ import { ref, type Ref, onMounted } from 'vue'
 // Helpers
 import { loadImage } from '@/utils/helpers'
 // Assets
-// import Face1 from '@/assets/images/faces/face_1@2x.png'
+import Face1 from '@/assets/images/faces/face_1@2x.png'
+import Face2 from '@/assets/images/faces/face_2@2x.png'
+import Face3 from '@/assets/images/faces/face_3@2x.png'
+import Face4 from '@/assets/images/faces/face_4@2x.png'
+import Face5 from '@/assets/images/faces/face_5@2x.png'
+import Face6 from '@/assets/images/faces/face_6@2x.png'
+import Face7 from '@/assets/images/faces/face_7@2x.png'
 import Faces from '@/assets/images/faces/faces@2x.png'
 
 
@@ -38,21 +44,43 @@ const isErase = ref( false )
 const image: Ref<HTMLImageElement | undefined> = ref()
 
 
+let activeImageIndex = 0
+
+let imagesConfig = [ {
+  image  : Face1,
+  mobile : true,
+}, {
+  image  : Face2,
+  mobile : true,
+}, {
+  image  : Face3,
+  mobile : true,
+}, {
+  image  : Face4,
+  mobile : true,
+}, {
+  image  : Face5,
+  mobile : true,
+}, {
+  image  : Face6,
+  mobile : true,
+}, {
+  image  : Face7,
+  mobile : true,
+}, {
+  image  : Faces,
+  mobile : false,
+} ]
+
+if ( window.innerWidth < 800 ) {
+  imagesConfig = imagesConfig.filter( img => !!img.mobile )
+}
 
 
-const init = async () => {
-  if ( canvas.value ) {
-    ctx.value = canvas.value.getContext('2d')
-  }
-  if ( canvasFrame.value ) {
-    canvasFrameCtx.value = canvasFrame.value.getContext('2d')
-  }
 
 
-  nurieCanvas.value = document.createElement('canvas')
-  nurieCtx.value = nurieCanvas.value.getContext('2d')
-
-  await loadImage( Faces ).then((res: unknown) => {
+const initImage = async ( img: string ) => {
+  await loadImage( img ).then((res: unknown) => {
     if ( !canvas.value || !ctx.value || !nurieCanvas.value || !canvasFrame.value || !canvasFrameCtx.value ) {
       return
     }
@@ -83,6 +111,25 @@ const init = async () => {
 
     image.value = loadedImage
   })
+}
+
+
+
+
+const init = async () => {
+  if ( canvas.value ) {
+    ctx.value = canvas.value.getContext('2d')
+  }
+  if ( canvasFrame.value ) {
+    canvasFrameCtx.value = canvasFrame.value.getContext('2d')
+  }
+
+
+  nurieCanvas.value = document.createElement('canvas')
+  nurieCtx.value = nurieCanvas.value.getContext('2d')
+
+
+  await initImage( imagesConfig[ 0 ].image );
 
   overlay.value = false
 }
@@ -163,6 +210,12 @@ onMounted( async () => {
 
 const setColor = ( color: string ) => {
   currentColor.value = color
+}
+
+const nextImage = async () => {
+  activeImageIndex = imagesConfig[ activeImageIndex + 1 ] ? activeImageIndex + 1 : 0
+
+  await initImage( imagesConfig[ activeImageIndex ].image )
 }
 
 const saveImage = () => {
@@ -249,7 +302,13 @@ const saveImage = () => {
         class="wall-save"
         @click="saveImage"
       >
-        save
+        🎨 save
+      </button>
+      <button
+        class="wall-save"
+        @click="nextImage"
+      >
+        next 🗿
       </button>
     </div>
   </main>
@@ -287,6 +346,7 @@ const saveImage = () => {
   flex-direction: row;
   justify-content: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .wall-pallette-color {

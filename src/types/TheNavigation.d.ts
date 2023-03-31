@@ -1,0 +1,1 @@
+export type TheNavigationPosition = 'bottom' | 'bottom-white' | 'bottom-spaced' | 'top' | undefined

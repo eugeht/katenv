@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "composite": true,
+    "lib": [],
+    "types": ["node", "jsdom"]
+  },
+  "exclude": [
+    "build-images.js",
+  ]
+}

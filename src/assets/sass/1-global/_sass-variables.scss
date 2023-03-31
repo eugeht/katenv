@@ -1,0 +1,98 @@
+/**
+ * SASS variables and mixins
+ */
+// @use "sass:math";
+
+
+// font-sizes
+$html-font-size: 16px;
+
+
+
+// z-index
+// $z-index-header: 1000;
+// $z-index-header-tabs: 1001;
+// $z-index-fader-paywall: 9000;
+
+// // ..
+// $z-index-curtain: 9500;
+// $z-index-curtain-top: 15000;
+
+// ..
+$z-index-menu: 10000;
+// $z-index-onboarding: 11000;
+// $z-index-paywall: 11000;
+// $z-index-subscription-offer: 11000;
+// $z-index-stories: 12000;
+// $z-index-modal-video: 13000;
+// $z-index-modals: 14000;
+// $z-index-mail-loader: 50000;
+
+
+
+// font family
+$font-family-mono: sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+
+
+
+
+@function strip-unit( $value ) {
+  @return math.div( $value , ($value * 0 + 1) );
+}
+
+@function rem( $pxValue ) {
+  @return #{ math.div( strip-unit( $pxValue ) , strip-unit( $html-font-size ) ) }rem;
+}
+
+
+@mixin safe-area($property, $safe-area-inset, $fallback) {
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    /* stylelint-disable-next-line */
+    #{$property}: env($safe-area-inset);
+    #{$property}: env($safe-area-inset, $fallback);
+  }
+
+  @supports (padding-bottom: string.unquote("min(0px, 10px)")) and (padding-bottom: env(safe-area-inset-bottom)) {
+    #{$property}: string.unquote("max(env(#{$safe-area-inset}), #{$fallback})");
+  }
+}
+
+@mixin safe-area-calc($property, $safe-area-inset, $addition) {
+  @supports ( (padding-bottom: env(safe-area-inset-bottom)) and (padding-bottom: calc(10px + 10px)) ) {
+    #{$property}: calc(env(#{$safe-area-inset}) + #{$addition});
+  }
+}
+
+@mixin safe-area-calc-negative($property, $safe-area-inset, $addition) {
+  @supports ( (padding-bottom: env(safe-area-inset-bottom)) and (padding-bottom: calc(10px + 10px)) ) {
+    #{$property}: calc(-1 * env(#{$safe-area-inset}) - #{$addition});
+  }
+}
+
+
+@mixin no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    display: none;
+
+    background: transparent;
+  }
+}
+
+
+@mixin mask-gradient($direction, $list: false, $direction2: false, $list2: false) {
+  @if $direction == none {
+    mask-image: none;
+  } @else if $direction2 and $list2 {
+    mask-image: linear-gradient($direction, $list), linear-gradient($direction2, $list2);
+  } @else {
+    mask-image: linear-gradient($direction, $list);
+  }
+}

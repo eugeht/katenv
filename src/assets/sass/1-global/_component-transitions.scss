@@ -1,0 +1,157 @@
+/**
+ * VUE transitions
+ */
+
+// routing transition
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.component-fade-enter-from,
+.component-fade-leave-to {
+  opacity: 0;
+}
+
+// fade
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// fade-slow
+.fade-slow-enter-to,
+.fade-slow-enter-active,
+.fade-slow-leave-active {
+  transition: opacity 0.4s;
+}
+
+.fade-slow-enter-from,
+.fade-slow-leave-to {
+  opacity: 0;
+}
+
+.fade-slow-enter-to {
+  position: absolute;
+  top: 0;
+}
+
+// ..
+.fade-fast-leave-active {
+  transition: all 0.2s ease;
+}
+
+.fade-fast-enter-active {
+  transition: all 0.2s ease;
+}
+
+.fade-fast-leave-to {
+  opacity: 0;
+
+  // transform: translateY(-30px);
+}
+
+.fade-fast-enter-from {
+  opacity: 0;
+
+  // transform: translateY(30px);
+}
+
+// scale
+.scale-enter-to,
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 0.4s;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0);
+  transform-origin: 50% 100%;
+}
+
+
+// ..
+.fade-height-enter-active,
+.fade-height-leave-active {
+  max-height: 230px;
+
+  transition: all 0.2s;
+}
+
+.fade-height-enter-from,
+.fade-height-leave-to {
+  max-height: 0;
+
+  opacity: 0;
+}
+
+
+// List
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.2s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+
+  // transform: translateX(-10px);
+  // transform: scale(0) translateX(-30px);
+  transform: scale(0);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+// ...
+
+// .slide-right-enter-active {
+
+//   transition: transform 0.5s ease;
+
+// }
+
+// .slide-right-enter {
+
+//   transform: translateX(100%);
+
+// }
+
+// .slide-left-enter {
+
+//   z-index: 1;
+
+// }
+
+// .slide-left-enter-active {
+
+//   z-index: 1;
+
+// }
+
+// .slide-left-leave-active {
+
+//   transition: transform 1s ease;
+
+//   z-index: 3;
+
+// }
+
+// .slide-left-leave-to {
+
+//   transform: translateX(100%);
+
+// }
+
+// /routing transition

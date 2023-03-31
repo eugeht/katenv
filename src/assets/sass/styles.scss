@@ -1,0 +1,20 @@
+/**
+ * Main styles file
+ *
+ * SASS - SCSS syntax
+ */
+
+
+
+// Base styles
+@import "./0-reset/normalization";
+
+// Global styles
+@import "./1-global/global";
+@import "./1-global/sass-variables";
+@import "./1-global/component-transitions";
+
+// Layout
+@import "./2-layout/layout";
+
+

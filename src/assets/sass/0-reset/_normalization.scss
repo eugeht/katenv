@@ -1,0 +1,185 @@
+/**
+ * Normalization and default tags rewrites
+ */
+
+// Remove hightlight
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+}
+
+// Default appearance
+input,
+textarea {
+  appearance: none;
+}
+
+// Scrollbar
+.no-scrollbar {
+  @include no-scrollbar;
+}
+
+// Selection
+// ::selection {
+//   color: var(--color-bg);
+
+//   background: var(--color-text);
+// }
+
+// html/body
+html {
+  height: 100%;
+  overflow: hidden;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  scroll-behavior: smooth;
+
+  // user-select: none;
+}
+
+body {
+  height: 100%;
+
+  min-width: 320px;
+
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  // overscroll-behavior-y: none;
+
+  // @include no-scrollbar;
+  overflow: auto;
+
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: rem(14px);
+  line-height: 1.4;
+  word-break: break-word;
+  text-align: left;
+
+  // background-color: var(--color-bg);
+  background-color: var(--color-muted-01);
+
+  @media only screen and (min-width: 900px) {
+    font-size: rem(16px);
+  }
+}
+
+// tags
+a {
+  color: inherit;
+}
+
+input,
+textarea,
+button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+label:focus {
+  outline: none;
+}
+
+iframe {
+  display: block;
+}
+
+img {
+  position: relative;
+
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+picture {
+  // position: relative;
+
+  display: block;
+  height: auto;
+
+  // max-width: 100%;
+
+  img.loading {
+    opacity: 0;
+
+    transition: opacity 0.2s linear;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 24px;
+
+  font-size: rem(20px);
+}
+
+p {
+  margin: 0 0 5px;
+}
+
+hr {
+  height: 1px;
+  min-height: 1px;
+
+  margin: 0;
+
+  border: none;
+
+  background: var(--color-muted-03);
+
+  &.spaced {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  &.spaced--btm {
+    margin-bottom: 32px;
+  }
+
+  &.dashed {
+    height: 0;
+
+    border-top: 1px dashed var(--color-muted-03);
+
+    background: none;
+
+    &.spaced {
+      margin: 17px 7px;
+    }
+  }
+
+  &.spaced--sm {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+
+  &.spaced--lg {
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+
+  &.gradient {
+    background: linear-gradient(90deg, var(--color-bg) 0%, var(--color-muted-13) 50%, var(--color-bg) 100%);
+  }
+
+  &.dark {
+    background-color: #c4c4c4;
+  }
+}

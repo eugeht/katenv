@@ -1,0 +1,18 @@
+@import 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap';
+
+#app {
+  height: 100%;
+  width: 100%;
+
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+input:focus,
+textarea:focus,
+a:focus,
+button:focus {
+  outline: #4f4f4f;
+  outline-style: dotted;
+  outline-offset: 1px;
+  outline-width: 2px;
+}

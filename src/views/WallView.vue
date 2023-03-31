@@ -25,7 +25,7 @@ const lastPosition: Ref<{
   y: null,
 } )
 
-const colors: string[] = [ '#FFE70A', '#EF483E', '#00A886', '#403F97' ]
+const colors: string[] = [ '#322e2f', '#FFE70A', '#EF483E', '#00A886', '#403F97' ]
 const currentColor: Ref<string> = ref( colors[ 0 ] )
 
 const lineWidth = ref(20)
@@ -293,7 +293,7 @@ const saveImage = () => {
       <input 
         class="wall-brush-size"
         type="range" 
-        min="5"
+        min="2"
         max="100"
         step="1"
         v-model="lineWidth"

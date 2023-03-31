@@ -104,7 +104,7 @@ const className: ComputedRef<string> = computed( () => {
           watch
         </RouterLink>
       </li>
-      <!-- <li
+      <li
         class="the-navigation-list__item"
         :class="{
           'disabled': $route.name === 'wall'
@@ -116,7 +116,7 @@ const className: ComputedRef<string> = computed( () => {
         >
           wall
         </RouterLink>
-      </li> -->
+      </li>
       <li
         class="the-navigation-list__item"
         :class="{

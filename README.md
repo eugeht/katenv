@@ -1,6 +1,8 @@
 # KateNV.com
 
-My friend's @katenvy "WOW" album promo site. Meow chat, solitaire references, coloring book and embedded unity game (author: multee).
+Simple weekend project.
+My friend's @katenvy "WOW" album promo site. 
+Meow chat, solitaire references, coloring book and embedded unity game (author: multee).
 
 
 

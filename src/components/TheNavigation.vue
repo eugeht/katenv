@@ -55,7 +55,7 @@ const className: ComputedRef<string> = computed( () => {
           meow chat
         </RouterLink>
       </li>
-      <!-- <li
+      <li
         class="the-navigation-list__item"
         :class="{
           'disabled': $route.name === 'game'
@@ -77,7 +77,7 @@ const className: ComputedRef<string> = computed( () => {
             <use xlink:href="#icon-arrow" />
           </svg>
         </RouterLink>
-      </li> -->
+      </li>
       <li
         class="the-navigation-list__item"
         :class="{
